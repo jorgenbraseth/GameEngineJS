@@ -1,3 +1,6 @@
+
+
+
 var Game = {
 
     sprites: [],
@@ -5,8 +8,6 @@ var Game = {
 
     init:function(keymonitor){
         this.screen = document.getElementById("game");
-
-
 
         Sprite.onload = function(){
             var allLoaded = this.sprites.reduce(function(prev, cur){
@@ -51,13 +52,14 @@ var Game = {
 function loop(){
     Game.step();
     Game.render();
+    requestAnimationFrame(loop)
 }
 
 
 function run() {
     KeyMonitor.bind();
     Game.onload = function(){
-        setInterval(loop,100);
+        loop();
     };
     Game.init(KeyMonitor);
 

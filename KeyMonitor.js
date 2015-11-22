@@ -18,11 +18,14 @@ var KeyMonitor = {
     },
 
     pressed: function(e) {
+        e.preventDefault();
         var key = window.event ? e.keyCode : e.which;
+        console.log(key);
         this.keyMap[key] = true;
     },
 
     released: function(e) {
+        e.preventDefault();
         var key = window.event ? e.keyCode : e.which;
         this.keyMap[key] = false;
     }

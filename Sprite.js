@@ -1,4 +1,16 @@
-var Sprite = {
+var SpriteClass = {
+    init: function(){
+        throw "Unimplemented init() in sprite!";
+    },
+    step: function(){
+        throw "Unimplemented step() in sprite!";
+    },
+    render: function(){
+        throw "Unimplemented render() in sprite!";
+    }
+};
+
+var Sprite = extend(SpriteClass, {
 
     keymonitor: {},
     xPos: 60,
@@ -37,6 +49,7 @@ var Sprite = {
         var RIGHT = 39;
         var UP = 38;
         var DOWN = 40;
+        var SPACE = 32;
 
         this.dx = 0;
         this.dy = 0;
@@ -64,6 +77,11 @@ var Sprite = {
             this.animFrame = 0;
         }
 
+        if(this.keymonitor.isPressed(SPACE)){
+            var audio = new Audio('shoot.mp3');
+            audio.play();
+        }
+
         this.xPos+=this.dx;
         this.yPos+=this.dy;
     },
@@ -80,4 +98,4 @@ var Sprite = {
         );
 
     }
-};
+});
